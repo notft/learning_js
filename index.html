@@ -4,30 +4,37 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <input placeholder="click to enter">
     <p>Rock Paper Scissors</p>
     <button onclick="
+        playermove = 'rock';
       playGame('rock');
     ">Rock</button>
 
     <button onclick="
+        playermove='paper';
       playGame('paper');
+      
     ">Paper</button>
 
     <button onclick="
+        playermove='scissors';
       playGame('scissors');
     ">Scissors</button>
     
-    <p class="js-scoreboard"></p>
+    <p class="js-scoreboard"> </p>
 
     <button onclick="
     score.wins = 0;
     score.losses = 0;
     score.ties = 0;
     localStorage.removeItem('score');
+    
     "> Reset </button >
 
     <script>
-        const score = {wins:0,losses:0,ties:0};
+        let name = inputElement.value;
+        let score = {wins:0,losses:0,ties:0};
 
 
        console.log(JSON.parse(localStorage.getItem('score')));
@@ -89,11 +96,18 @@
         }
 
         localStorage.setItem('score', JSON.stringify(score));
-
-        document.querySelector('.js-scoreboard')
-            .innerHTML = (`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
+        
+        let score_msg = (`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
         Wins: ${score.wins}, Losses: ${score.losses},Ties: ${score.ties}`);
-      }
+
+        function updatescore(){
+            document.querySelector('.js-scoreboard').innerHTML = score_msg;
+            document.querySelector('.js-scoreboard').innerHTML = name;
+        } 
+        updatescore();
+    }
+
+      
 
       function pickComputerMove() {
         const randomNumber = Math.random();
@@ -110,6 +124,7 @@
 
         return computerMove;
       }
+        
     </script>
   </body>
 </html>
