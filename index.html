@@ -4,7 +4,13 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <input placeholder="click to enter">
+    <p>Shipping cost Calculator</p>
+    <input placeholder="Calculator" class="js-input">
+    <button onclick="
+      calculate();
+      ">Calculate</button>
+    <p class="js-output"></p>
+
     <p>Rock Paper Scissors</p>
     <button onclick="
         playermove = 'rock';
@@ -33,19 +39,32 @@
     "> Reset </button >
 
     <script>
-        let name = inputElement.value;
+      
+      function calculate(){
+        inputElement = document.querySelector('.js-input');
+        inputvalue = Number(inputElement.value);
+        outputElement = document.querySelector('.js-output'); 
+        
+        if(inputvalue >= 40){
+          inputvalue = inputvalue;
+        }
+        else if(inputvalue <= 40){
+          inputvalue += 20;
+        }
+        
+        outputvalue = document.querySelector('.js-output').innerHTML = inputvalue;
+      }
+
+        console.log(name);
         let score = {wins:0,losses:0,ties:0};
 
-
-       console.log(JSON.parse(localStorage.getItem('score')));
+        console.log(JSON.parse(localStorage.getItem('score')));
        
        if(score ===  null){
             score = {
                 wins : 0,
                 losses : 0,
                 ties : 0
-                
-
             };
        }
 
