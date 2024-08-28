@@ -7,9 +7,14 @@
 </head>
 <body>
 
-    <h1>Enter your TODO list here</h1>
+    <h1 class = "js-h1">Enter your TODO list here</h1>
     <input class="js-inputbar">
-    <button class="js-inputsave">Save</button>
+    <button
+     onclick="
+     pull();
+     render();
+     " class="js-inputsave">Save</button>
+    <div class="js-div"></div>
 
     <style src="styletodo.css"></style>
     <script src="scripttodo.js"></script>
